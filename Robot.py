@@ -50,9 +50,7 @@ class Robot:
         self.set_direction(face)
         self.report()
 
-    def _rotate(self,direction):
-
-        clockwise = 1 if direction == 'RIGHT' else -1
+    def _rotate(self,clockwise = 1):
 
         current_direction_index = DIRECTION_LIST.index(self.get_direction())
 
@@ -62,11 +60,12 @@ class Robot:
 
 
     def right(self):
-        self._rotate('RIGHT')
+
+        self._rotate(clockwise= 1)
         self.report()
 
     def left(self):
-        self._rotate('LEFT')
+        self._rotate(clockwise= -1)
         self.report()
 
 
