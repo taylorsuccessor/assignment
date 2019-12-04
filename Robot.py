@@ -14,7 +14,7 @@ class Robot:
     def __init__(self, table, validator):
 
         self._table = table if table else RobotTable()
-        self._validator = validator if validator else RobotPositionValidator(self, self._table )
+        self._validator = validator if validator else RobotPositionValidator(self )
 
 
     def set_x(self, new_x):
@@ -55,19 +55,18 @@ class Robot:
     def _rotate(self,clockwise = 1):
 
         current_direction_index = DIRECTION_LIST.index(self.get_direction())
-        new_direction_index = (current_direction_index + clockwise) % 4
+        new_direction_index = (current_direction_index + clockwise) % len(DIRECTION_LIST)
 
         self.set_direction(DIRECTION_LIST[new_direction_index])
+        self.report()
 
 
     def right(self):
-
         self._rotate(clockwise= 1)
-        self.report()
 
     def left(self):
         self._rotate(clockwise= -1)
-        self.report()
+
 
 
     def move(self):

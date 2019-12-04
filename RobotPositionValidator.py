@@ -4,9 +4,9 @@ class RobotPositionValidator:
     robot = None
     table = None
 
-    def __init__(self,robot, table):
+    def __init__(self,robot):
         self.robot = robot
-        self.table = table
+        self.table = robot.get_table()
 
     def validate_position(self, x, y):
 
