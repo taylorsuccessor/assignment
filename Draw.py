@@ -9,14 +9,14 @@ class Draw:
 
     @staticmethod
     def draw_robot(direction):
-        if direction == 'NORTH':
-            print('^'),
-        elif direction == 'EAST':
-            print('>'),
-        elif direction == 'SOUTH':
-            print('V'),
-        elif direction == 'WEST':
-            print('<'),
+        robot_image ={
+            'NORTH':'^',
+            'EAST':'>',
+            'SOUTH':'V',
+            'WEST':'<'
+        }
+
+        print(robot_image.get(direction)),
 
 
 
