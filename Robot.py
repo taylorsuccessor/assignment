@@ -36,6 +36,9 @@ class Robot:
     def set_direction(self, direction):
         self._direction = direction
 
+    def get_table(self):
+        return self._table
+
     def set_location(self, new_x, new_y):
 
         if not self._validator.validate_position(new_x, new_y):
@@ -82,7 +85,7 @@ class Robot:
 
 
     def report(self):
-        Draw(self.get_x(), self.get_y(), self.get_direction())
+        Draw(self)
         output= str(self.get_x()) +',' +str(self.get_y())+','+ self.get_direction()
         print(output)
         return output
