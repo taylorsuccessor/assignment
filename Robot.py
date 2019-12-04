@@ -38,7 +38,6 @@ class Robot:
 
     def set_location(self, new_x, new_y):
 
-        # print(666,new_x,new_y)
         if not self._validator.validate_position(new_x, new_y):
             return False
 
@@ -53,7 +52,6 @@ class Robot:
     def _rotate(self,clockwise = 1):
 
         current_direction_index = DIRECTION_LIST.index(self.get_direction())
-
         new_direction_index = (current_direction_index + clockwise) % 4
 
         self.set_direction(DIRECTION_LIST[new_direction_index])
@@ -74,13 +72,10 @@ class Robot:
         new_x = self.get_x()
         new_y = self.get_y()
 
-        type_of_move = DIRECTION_RELATED_COORDINATION.get(self.get_direction())
+        type_of_move, move_value = DIRECTION_RELATED_COORDINATION.get(self.get_direction())
 
-        if type_of_move == 'X' or  type_of_move == '-X':
-            new_x = new_x + 1 if type_of_move == 'X' else new_x -1
-
-        if type_of_move == 'Y' or  type_of_move == '-Y':
-            new_y = new_y + 1 if type_of_move == 'Y' else new_y -1
+        new_x = new_x + move_value if type_of_move == 'X' else new_x
+        new_y = new_y + move_value if type_of_move == 'Y' else new_y
 
         self.set_location(new_x, new_y )
         self.report()

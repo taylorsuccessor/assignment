@@ -62,7 +62,13 @@ you can change config.py file and set default values
 should be clockwise 
 
 - the
->DIRECTION_RELATED_COORDINATION = {'NORTH':'Y','EAST':'X','SOUTH':'-Y','WEST':'-X'}
+> DIRECTION_RELATED_COORDINATION = {
+    'NORTH':['Y',1],
+    'EAST':['X',1],
+    'SOUTH':['Y',-1],
+    'WEST':['X',-1]
+}
+
 
 robot movement will affect any coordination X,-X,Y,-Y according to face(direction of robot)
 
