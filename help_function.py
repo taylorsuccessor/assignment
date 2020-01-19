@@ -26,8 +26,14 @@ find_index_list.index('b')
 
 
 x = my_list.pop()
-x = my_list.popleft()
 
 
 vec = [2, 4, 6]
 [3*x for x in vec] #[6, 12, 18]
+
+
+dic= {'a':1,'b':2}
+
+for (index,item) in dic.items():
+    print(index)
+    print (item)
