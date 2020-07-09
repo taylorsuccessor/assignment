@@ -1,0 +1,54 @@
+{% extends "layout/index.html" %}
+
+{% block content %}
+
+
+<h1><span class="blue"> </span> <span class="yellow"> Teachers</span></h1>
+<h2>Bulk upload <a href="{% url 'upload_teacher_list' %}" target="_blank">Upload Teacher CSV</a></h2>
+<div>
+    <form class="search_form" >
+    {{search_form}}
+          </form>
+</div>
+
+<table class="container">
+    <thead>
+    <tr>
+        <th><h1>First Name</h1></th>
+        <th><h1>Last Name</h1></th>
+        <th><h1>Email Address</h1></th>
+        <th><h1>Phone Number</h1></th>
+        <th><h1>Room Number</h1></th>
+        <th><h1>Subjects Taught</h1></th>
+    </tr>
+    </thead>
+    <tbody>
+
+    {% if teacher_list %}
+    {% for teacher in teacher_list %}
+    <tr>
+        <td><a href="{% url 'teacher_info' teacher.id %}">{{teacher.first_name}}</a></td>
+        <td>{{teacher.last_name}}</td>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.phone_number}}</td>
+        <td>{{teacher.room_number}}</td>
+        <td>{{teacher.subjects_taught}}</td>
+    </tr>
+    {% endfor %}
+    {% else %}
+    <tr>
+        <td colspan="6">No teacher uploadeds <a  href="{% url 'upload_teacher_list' %}" >click here to upload</a></td>
+
+    </tr>
+
+    {% endif %}
+    </tbody>
+
+</table>
+
+
+
+
+
+
+{% endblock %}

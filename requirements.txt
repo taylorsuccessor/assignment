@@ -1,0 +1,7 @@
+django == 2.1.7
+djangorestframework==3.10.2
+markdown == 3.1.1
+django-filter ==2.2.0
+boto==2.46.1
+django-storages==1.5.2
+django-cors-headers ==3.1.0

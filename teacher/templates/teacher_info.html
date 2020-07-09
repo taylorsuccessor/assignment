@@ -1,0 +1,28 @@
+{% extends "layout/index.html" %}
+
+{% block content %}
+
+
+<h1><img src="/static/teachers/{{teacher.profile_picture}}" class="teacher_image"> </h1>
+<h2>{{teacher.first_name}} {{teacher.last_name}} - <a   href="{% url 'teacher_list' %}"  target="_blank">Teacher List</a></h2>
+
+<table class="container">
+
+    <tbody>
+
+    <tr>
+        <td>{{teacher.first_name}} {{teacher.last_name}}</td>
+        <td>{{teacher.email}}</td>
+        <td>{{teacher.phone_number}}</td>
+        <td>{{teacher.room_number}}</td>
+        <td>{{teacher.subjects_taught}}</td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+
+
+
+{% endblock %}
