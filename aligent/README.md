@@ -1,7 +1,6 @@
-# Wolt: Task to Huminize opening hours json
+# Aligent: Back-End Developer Assignment 
 - solution:
-    - [Dataframe Solution](#dataframe-solution)
-    - [Loop Solution](#loop-solution)
+    - [solution](#dataframe-solution)
    
 - How to install:
     - [How to install](#how-to-install) \
@@ -11,46 +10,13 @@
 
 - Testing (the same test will test both solutions for same data):
     - [How to test](#how-to-test)
-    
-- Thoughts:
-    - [My Thoughts In Data Format And Json Structure](#my-thoughts-in-data-format-and-json-structure)
- 
-The target of this task to convert json to readable text
-We have Json data contains info about restaurant opening hours and we need to make these info readable for human.
 
-for this task I've implemented two solutions.
-1. * [Convert Json to Dataframe and order it then take every two lines](#dataframe-solution)
-2. * [Sorting the Json and loop over it and colect the opening hours](#loop-solution)
+## solution
 
-
-## Dataframe solution
-
-this solution is to convert the data to dataframe
-
-
-| day_name  | day  | value | type |   
-|-----------|------|-------|------|
-|  sunday   |   7  |  4000 | open |
-|  sunday   |   7  |  8000 | close|
-|           |      |       |      |
-
-we sort data by [day, value]
-and loop by two rows so we have open -> close and open day
-
-1. - if we start with close row we move it to the end
-2. - if the number of rows not even the data not valid
-3. - if we have two open after each other directly the data not valid
-
-
-
-## Loop Solution
-
-first, we sort the days by the pre defined Map we have (Monday: 1 ...) \
-then we order the hours in the day using the ( value = hour ) UNIX time \
-then we start loop: \
-We save when it open in avariable and when it's closed we append to day data the open and the close hour \
-we have to handle some spicial cases like if the week start with open and the close in the last day
-
+we take the difference between two datetimes in seconds
+then we convert it to the required output
+1. - we get weekdays difference by using numpy.busday_count(...)
+2. - I assumed that you want to change all the output when you pass response_type
 
 # How to install
 
@@ -110,19 +76,6 @@ you can install spicific version of python and follow [By virtual environment](#
 
 # How to Test
 
-`he same test will test both solutions for same data`
-
-
-  
-    response = client.post("/api/opening-hours/", json=json)
-    assert response.status_code == 422
-
-    response = client.post("/api/opening-hours/second-solution", json=json)
-    assert response.status_code == 422
-
-
-
-* for testing I've added  => RUN pytest -vv inside Dockerfile so the build will not success till the test success
 * if you are using virtualenv just run >> pytest -vv
 * you can also enter the docker container and run the test
 cd to your project first
@@ -130,24 +83,4 @@ cd to your project first
           docker-compose exec server /bin/bash
           pytest -vv
 
-
-# My Thoughts in data format and JSON structure
-
-If we look for the solution we always have to loop over the days and over the hour of the days \
-from developer or (from code) side it's better for me to have more structured data or as a table like this
-
-        [
-          {"day": "sunday", "value": 4000, "type": "open"},
-          {"day": "sunday", "value": 8000, "type": "close"}
-        ]
-or CSV file
-
-| day_name  | value | type |   
-|-----------|-------|------|
-|  sunday   |  4000 | open |
-|  sunday   |  8000 | close|
-
-
-So we can easily convert it to Dataframe or sort it \
-but for the human it's easier to have it group by day 
 
