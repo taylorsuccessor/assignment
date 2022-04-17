@@ -1,2 +1,0 @@
-from .opening_hours import opening_hours_router
-from .second_solution import second_solution_router

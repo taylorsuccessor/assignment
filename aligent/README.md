@@ -30,7 +30,7 @@ Currently I'm using docker and docker-compose to save Python (3.9) version a  pi
 and this is the easest way 
 1. [install docker](https://docs.docker.com/engine/install/ubuntu/) 
 2. [install docker-compose](https://docs.docker.com/compose/install/)
-3. unzip the the code file and cd inside the folder
+3. clone the repo https://github.com/taylorsuccessor/datetime_difference and cd to datetime_difference
 4. run docker-compose up
 5. go to your browser [http://localhost:8000/docs](http://localhost:8000/docs)
 
